@@ -1,0 +1,8 @@
+version: "3"
+services:
+
+	koel:
+		image: etopian/docker-koel
+
+	db:
+		image: mariadb
