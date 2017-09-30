@@ -2,7 +2,7 @@ version: "3"
 services:
 
   koel:
-    image: koel
+    image: etopian/docker-koel
     volumes:
       - "/music:/DATA/music"
     ports:
