@@ -1,0 +1,11 @@
+version: "3"
+services:
+
+  surfer:
+    image: surfer
+    volumes:
+      - "/music:/app/data"
+    ports:
+      - "3000:3000"
+    container_name: surfer
+    restart: on-failure
