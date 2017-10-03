@@ -17,18 +17,17 @@ RUN apt-get update \
     && git clone https://github.com/phanan/koel.git . \
     && git checkout v3.6.2 \
     && composer install \
+    && npm install yarn@0.25.4 -g \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY files/.env files/init.sh files/run.sh ./
+COPY files/.env files/run.sh ./
 
-RUN chmod 700 init.sh \
-    && chmod 700 run.sh
+RUN chmod 700 run.sh
 
 VOLUME ["/music"]
 
+WORKDIR /var/www/html/
+
 EXPOSE 8000
 
-#ADD nginx-setup /etc/nginx/sites-available/default
-#RUN chown -R www-data:www-data /var/www/html
-#CMD service nginx start && php-fpm
-CMD /bin/bash
+CMD ./run.sh
